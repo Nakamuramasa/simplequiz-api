@@ -57,4 +57,10 @@ class LoginController extends Controller
             $this->username() => "ログインに失敗しました。"
         ]);
     }
+
+    public function logout()
+    {
+        $this->guard()->logout();
+        return response()->json(['message' => 'ログアウトしました。'], 200);
+    }
 }
