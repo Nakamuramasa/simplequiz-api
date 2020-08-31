@@ -26,7 +26,6 @@ class LoginController extends Controller
         }
 
         $this->guard()->setToken($token);
-
         return true;
     }
 
@@ -46,7 +45,6 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(Request $request)
     {
         $user = $this->guard()->user();
-
         if($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()){
             return response()->json(["errors" => [
                 "message" => "メールアドレスが有効化されていません。"
@@ -61,6 +59,6 @@ class LoginController extends Controller
     public function logout()
     {
         $this->guard()->logout();
-        return response()->json(['message' => 'ログアウトしました。'], 200);
+        return response()->json(['message' => 'ログアウトに成功しました。'], 200);
     }
 }
