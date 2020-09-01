@@ -7,6 +7,8 @@ Route::get('information', 'Quiz\InformationController@index');
 Route::group(['middleware' => ['auth:api']], function(){
     Route::post('logout', 'Auth\LoginController@logout');
     Route::put('settings/password', 'User\SettingsController@updatePassword');
+
+    Route::get('quiz', 'Quiz\QuizController@index');
 });
 
 Route::group(['middleware' => ['guest:api']], function(){
