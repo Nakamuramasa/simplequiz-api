@@ -4,11 +4,14 @@ Route::get('me', 'User\MeController@getMe');
 
 Route::get('information', 'Quiz\InformationController@index');
 
+Route::get('ranking', 'Quiz\RankingController@index');
+
 Route::group(['middleware' => ['auth:api']], function(){
     Route::post('logout', 'Auth\LoginController@logout');
     Route::put('settings/password', 'User\SettingsController@updatePassword');
 
     Route::get('quiz', 'Quiz\QuizController@index');
+    Route::post('insertRanking', 'Quiz\RankingController@insertRanking');
 });
 
 Route::group(['middleware' => ['guest:api']], function(){
