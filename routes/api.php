@@ -1,9 +1,7 @@
 <?php
 
 Route::get('me', 'User\MeController@getMe');
-
 Route::get('information', 'Quiz\InformationController@index');
-
 Route::get('ranking', 'Quiz\RankingController@index');
 
 Route::group(['middleware' => ['auth:api']], function(){
@@ -12,6 +10,7 @@ Route::group(['middleware' => ['auth:api']], function(){
 
     Route::get('quiz', 'Quiz\QuizController@index');
     Route::post('insertRanking', 'Quiz\RankingController@insertRanking');
+    Route::get('mypage', 'User\MypageController@index');
 });
 
 Route::group(['middleware' => ['guest:api']], function(){
